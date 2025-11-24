@@ -2,14 +2,14 @@ import BillDetails from "../Model/Bill.js";
 
 export const createBill = async (req, res, next) => {
     try {
-        const { invoice_no, invoice_date, state, state_code, transport_name, vehicle_number, date_of_supply, pono_date, eway_bill_no, receiver_name, receiver_address, receiver_gstin, receiver_state, receiver_state_code, consignee_name, consignee_address, consignee_gstin, consignee_state, consignee_state_code ,items,totalquantity,totalweight,total_before_tax,cgst,sgst,igst,cgstamount,sgstamount,igstamount,roundoff,grand_total,grand_total_words} = req.body;
+        const { invoice_no, invoice_date, state, state_code, transport_name, vehicle_number, date_of_supply, pono_date, eway_bill_no, receiver_name, receiver_address, receiver_gstin, receiver_state, receiver_state_code, consignee_name, consignee_address, consignee_gstin, consignee_state, consignee_state_code ,items,totalquantity,total_before_tax,cgst,sgst,igst,cgstamount,sgstamount,igstamount,roundoff,grand_total,grand_total_words} = req.body;
         
       
         const existingBill = await BillDetails.findOne({ invoice_no });
         
         if (!existingBill) {
             const BillItem = new BillDetails({
-                invoice_no, invoice_date, state, state_code, transport_name, vehicle_number, date_of_supply, pono_date, eway_bill_no, receiver_name, receiver_address, receiver_gstin, receiver_state, receiver_state_code, consignee_name, consignee_address, consignee_gstin, consignee_state, consignee_state_code,items,totalquantity,totalweight,total_before_tax,cgst,sgst,igst,cgstamount,sgstamount,igstamount,roundoff,grand_total,grand_total_words
+                invoice_no, invoice_date, state, state_code, transport_name, vehicle_number, date_of_supply, pono_date, eway_bill_no, receiver_name, receiver_address, receiver_gstin, receiver_state, receiver_state_code, consignee_name, consignee_address, consignee_gstin, consignee_state, consignee_state_code,items,totalquantity,total_before_tax,cgst,sgst,igst,cgstamount,sgstamount,igstamount,roundoff,grand_total,grand_total_words
             });
             const savedBilltem = await BillItem.save();
             console.log(savedBilltem);
