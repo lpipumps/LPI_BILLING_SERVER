@@ -82,7 +82,7 @@ export const fetchBill = async (req, res, next) => {
         }
 
         // Generate the new invoice number
-        const newInvoiceNo = `LGC/${formattedYear}/${newBillNo}`;
+        const newInvoiceNo = `LPIW/${formattedYear}/${newBillNo}`;
 
         // Return the invoice number to the frontend
         return res.status(200).json({ invoice_no: newInvoiceNo });
