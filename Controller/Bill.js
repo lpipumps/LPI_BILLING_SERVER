@@ -187,4 +187,23 @@ export const updateBill = async(req,res,next) =>{
       return res.status(500).json({ message: 'Internal server error.' });
     }
   };
-  
+  export const markInvoiceChecked=async(req,res,next)=>{
+    try{
+        const invoice = req.params.invoice_no;
+        
+
+        const updated=await BillDetails.findOneAndUpdate(
+          {invoice_no:invoice},
+          {checked:true},
+          {new:true});
+    if(!updated){
+        return res.status(404).json({message:'Invoice not found.'});
+    }
+    res.status(200).json({message:'Invoice marked as checked.',updated});
+
+    }
+    catch(error){
+        console.error('Error marking invoice as checked:',error);
+        return res.status(500).json({message:'Internal server error.'});
+    }
+  };

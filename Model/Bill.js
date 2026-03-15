@@ -14,6 +14,10 @@ const BillSchema = new Schema({
         unique: true,
         required: true
     },
+    checked:{
+        type:Boolean,
+        default:false
+    },
     state:{
         type: String,
         required: true
